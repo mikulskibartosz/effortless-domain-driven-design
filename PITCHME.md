@@ -42,12 +42,15 @@ addToOrder(item, order, quantity);
 addToOrder(order, item, -1);
 
 addToOrder(order, item, 1000000);
+
+(orderId + itemId) * quantity
 ```
 @[2]
 @[5]
 @[7]
 @[9]
 @[11]
+@[13]
 
 ---
 
@@ -128,5 +131,53 @@ public void sendNotification(String email) {
 * email
 * mail
 * e_mail
+
+---
+
+@title[Constraints - 1]
+
+## Value = Type
+## ???
+
+---
+
+@title[Constraints - 2]
+
+## Value = Type + Constraints
+
+---
+
+@title[Constraints - code example]
+
+```java
+public void addToOrder(
+  OrderId orderId, ItemId itemId, Quantity quantity
+)
+
+public void sendNotification(
+  VerifiedEmail email
+)
+```
+@[2]
+@[6]
+
+---?color=red
+
+@title[DDD]
+
+# The core of DDD
+## Entities and value objects
+
+---
+
+@title[DDD - requirements]
+# Object properties
+
+@ul[squares]
+
+- specific types (not stringly-typed)
+- immutability
+
+@ulend
 
 ---
