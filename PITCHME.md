@@ -100,12 +100,15 @@ class User {
 @title[Stringly-typed: email validation]
 ```java
 public void sendNotification(String email) {
-  if(!emailValidator.isValid(email) || !emailService.isVerified(email)) {
+  if(!emailValidator.isValid(email)) {
+    throw new RuntimeException("...")
+  }
+  if(!emailService.isVerified(email)) {
     throw new RuntimeException("...")
   }
 }
 ```
-@[2-4]
+@[2,5]
 
 ---
 
@@ -119,7 +122,11 @@ public void sendNotification(String email) {
 
 # GDPR?
 ## Ctrl + f
-<br>
-##### emailAddress email_address, email, mail, e_mail
+
+* emailAddress
+* email_address
+* email
+* mail
+* e_mail
 
 ---
