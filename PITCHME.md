@@ -161,7 +161,7 @@ public void sendNotification(
 @[2]
 @[6]
 
----?color=red
+---?color=#FFF994
 
 @title[DDD]
 
