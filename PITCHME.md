@@ -72,3 +72,54 @@ if(!itemService.itemExists(itemId))
 @[7-8]
 @[10-11]
 @[5,8,11](throw new RuntimeException("validation error"))
+
+---
+
+@title[Stringly-typed: Text]
+
+# Stringly-typed
+
+## Text
+
+
+---
+
+@title[Stringly-typed: User example]
+```java
+class User {
+  private String firstName;
+  private String lastName;
+  private String emailAddress;
+  private String phoneNumber;
+}
+```
+@[2-5]
+
+---
+
+@title[Stringly-typed: email validation]
+```java
+public void sendNotification(String email) {
+  if(!emailValidator.isValid(email) || !emailService.isVerified(email)) {
+    throw new RuntimeException("...")
+  }
+}
+```
+@[2-4]
+
+---
+
+@title[Stringly-typed: GDPR]
+
+# GDPR?
+
+---
+
+@title[Stringly-typed: Ctrl + F]
+
+# GDPR?
+## Ctrl + f
+<br>
+##### emailAddress email_address, email, mail, e_mail
+
+---
