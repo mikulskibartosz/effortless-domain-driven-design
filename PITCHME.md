@@ -41,7 +41,7 @@ addToOrder(item, order, quantity);
 
 addToOrder(order, item, -1);
 ```
-@[1:3]
+@[1-3]
 @[5]
 @[7]
 @[9]
