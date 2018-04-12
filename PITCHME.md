@@ -43,10 +43,32 @@ addToOrder(order, item, -1);
 
 addToOrder(order, item, 1000000);
 ```
-@[1-3]
+@[2]
 @[5]
 @[7]
 @[9]
 @[11]
 
 ---
+
+@title[Stringly-typed: addToOrder implementation]
+```java
+public void addToOrder(
+  long orderId, long itemId, long quantity
+) {
+if(quantity <= 0 || quantity > MAX_ORDER)
+		throw new IllegalArgumentException(“foo bar”);
+
+if(!orderService.orderExists(orderId))
+  throw new IllegalStateException(“foo bar”);
+
+if(!itemService.itemExists(itemId))
+	throw new IllegalStateException(“foo bar”);
+
+ //
+}
+```
+@[4-5]
+@[7-8]
+@[10-11]
+@[5,8,11](throw new RuntimeException("validation error"))
