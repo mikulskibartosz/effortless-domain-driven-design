@@ -94,6 +94,12 @@ class User {
 
 ---
 
+@title[GDPR - hell - image]
+
+![Hell https://unsplash.com/photos/VU03qDREAgU](images/fire.jpg)
+
+---
+
 @title[Stringly-typed: Ctrl + F]
 
 # GDPR?
