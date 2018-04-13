@@ -330,6 +330,14 @@ public User withFirstName(FirstName firstName) {
 
 ---
 
+@title[Scala - effortless]
+
+# SCALA
+
+### Effortless
+
+---
+
 @title[DDD - Scala - simple types]
 
 # Simple types
@@ -359,6 +367,7 @@ case class User(
   phoneNumber: PhoneNumber
 ) 
 ```
+@[1]
 
 ---
 
@@ -377,6 +386,45 @@ case class User(
 ```scala
 user.copy(firstName = FirstName("John"))
 ```
+
+---
+
+@title[Case classes]
+
+# Case classes
+
+---
+
+@title[Companion object]
+
+```scala
+case class FirstName(value: String)
+
+object FirstName {
+  def apply(firstName: String): FirstName = new FirstName(firstName)
+}
+
+val firstName = FirstName("John")
+
+```
+@[1]
+@[3-5]
+@[7]
+
+---?color=#FFF994
+
+@title[Case classes - features]
+
+# Case classes
+
+@ul[squares]
+
+- companion object
+- pattern matching
+- `copy` method (shallow copy)
+- case classes are compared by structure and not by reference (x1 == x2)
+
+@ulend
 
 ---
 
