@@ -64,7 +64,7 @@ class User {
 
 # Everything was fine
 
-### usally...
+### usually...
 
 ---
 
