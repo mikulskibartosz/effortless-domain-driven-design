@@ -23,7 +23,7 @@
 
 @title[Story - team - picture]
 
-![Team](images/developers.jpg)
+![Team - https://unsplash.com/photos/2_3c4dIFYFU](images/developers.jpg)
 
 ---
 
