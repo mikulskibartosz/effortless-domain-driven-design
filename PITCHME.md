@@ -9,9 +9,89 @@
 
 ---
 
+@title[Story - once upon a time]
+
+# Once upon a time...
+
+---
+
+@title[Story - team]
+
+# Fearless team of developers
+
+---
+
 @title[The usual way]
 
 # The usual way
+
+---
+
+@title[Primitive types]
+
+# Primitive types
+
+---
+
+@title[addToOrder method]
+
+```java
+public void addToOrder(
+  long orderId, long itemId, long quantity
+);
+```
+@[1]
+@[2]
+
+---
+
+@title[User class]
+
+```java
+class User {
+  private String firstName;
+  private String lastName;
+  private String emailAddress;
+  private String phoneNumber;
+}
+```
+@[1]
+@[2-5]
+
+---
+
+@title[Everything was fine - usually]
+
+# Everything was fine
+
+### usally...
+
+---
+
+@title[Stringly-typed: GDPR]
+
+# GDPR
+
+##### General Data Protection Regulation
+
+---
+
+@title[GDPR - hell]
+
+# Hell
+
+---
+
+@title[Stringly-typed: Ctrl + F]
+
+# GDPR?
+## Ctrl + f
+
+* emailAddress
+* email_address
+* email
+* mail
+* e_mail
 
 ---
 
@@ -115,25 +195,6 @@ public void sendNotification(String email) {
 
 ---
 
-@title[Stringly-typed: GDPR]
-
-# GDPR?
-
----
-
-@title[Stringly-typed: Ctrl + F]
-
-# GDPR?
-## Ctrl + f
-
-* emailAddress
-* email_address
-* email
-* mail
-* e_mail
-
----
-
 @title[Constraints - 1]
 
 ## Value = Type
@@ -171,7 +232,7 @@ public void sendNotification(
 ---
 
 @title[DDD - requirements]
-# Object properties
+# Requirements
 
 @ul[squares]
 
@@ -179,5 +240,64 @@ public void sendNotification(
 - immutability
 
 @ulend
+
+---
+
+@title[DDD - types]
+# Simple types
+
+```java
+public class FirstName {
+  private final String value;
+  
+  public FirstName(String value) {
+    this.value = value;
+  }
+  
+  public String getValue() {
+    return this.value;
+  }
+}
+```
+
+---
+
+@title[DDD - complex type]
+
+# Complex types
+
+```java
+public class User {
+  private final FirstName firstName;
+  private final LastName lastName;
+  private final EmailAddress emailAddress;
+  private final TelephoneNumber telephoneNumber;
+  
+  (...)
+}
+```
+
+---
+
+@title[DDD - complex part - the easy part]
+
+# That was the easy part...
+
+---
+
+@title[DDD - complex part - change value]
+
+```java
+public User withFirstName(FirstName firstName) {
+  return new User(
+    firstName,
+    this.lastName,
+    this.emailAddress,
+    this.phoneNumber
+  );
+}
+```
+@[1]
+@[3]
 
 ---
