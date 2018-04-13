@@ -153,6 +153,9 @@ addToOrder(order, item, 1000000);
 ---
 
 @title[Stringly-typed: addToOrder implementation]
+
+# Defensive programming
+
 ```java
 public void addToOrder(
   long orderId, long itemId, long quantity
