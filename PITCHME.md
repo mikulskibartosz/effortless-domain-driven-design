@@ -74,6 +74,12 @@ class User {
 
 ---
 
+@title[Everything was fine - picture]
+
+![Joy https://unsplash.com/photos/e3OUQGT9bWU](images/joy.jpg)
+
+---
+
 @title[Stringly-typed: GDPR]
 
 # GDPR
