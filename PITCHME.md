@@ -21,6 +21,12 @@
 
 ---
 
+@title[Story - team - picture]
+
+![Team](images/developers.jpg)
+
+---
+
 @title[The usual way]
 
 # The usual way
