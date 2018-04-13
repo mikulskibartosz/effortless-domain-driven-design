@@ -323,3 +323,63 @@ public User withFirstName(FirstName firstName) {
 @[2,3-5]
 
 ---
+
+@title[Scala]
+
+# SCALA
+
+---
+
+@title[DDD - Scala - simple types]
+
+# Simple types
+
+```scala
+class FirstName(val value: String) {}
+
+case class FirstName(value: String)
+
+class FirstName(val value: String) extends AnyVal {}
+```
+@[1]
+@[3]
+@[5]
+
+---
+
+@title[DDD - Scala - complex types]
+
+# Complex types
+
+```scala
+case class User(
+  firstName: FirstName,
+  lastName: LastName,
+  emailAddress: EmailAddress,
+  phoneNumber: PhoneNumber
+) 
+```
+
+---
+
+@title[DDD - Scala - immutability]
+
+# Immutability?
+
+#### Out of the box
+
+---
+
+@title[DDD - Scala - copy]
+
+# Immutability.
+
+```scala
+user.copy(firstName = FirstName("John"))
+```
+
+---
+
+
+
+---
