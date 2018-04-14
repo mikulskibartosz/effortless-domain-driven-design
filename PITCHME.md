@@ -559,7 +559,7 @@ class FirstName(val value: String) extends AnyVal {}
 
 @title[The one thing]
 
-## What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary?
+#### What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary?
 
 "The One Thing" - Gary Keller
 
