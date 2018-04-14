@@ -1,11 +1,6 @@
-@title[Introduction]
+@title[First]
 
-# Effortless domain-driven design
-
-## The real Power of Scala
-
-##### Bartosz Mikulski
-##### @mikulskibartosz
+(This slide is intentionally left blank)
 
 ---
 
@@ -100,6 +95,12 @@ class User {
 
 ---
 
+@title[Road to hell]
+
+### The road to hell is paved with JavaScript and primitive types.
+
+---
+
 @title[Stringly-typed: Ctrl + F]
 
 # GDPR?
@@ -110,6 +111,11 @@ class User {
 * email
 * mail
 * e_mail
+
+---?color=FF0000
+@title[Avoid primitive types]
+
+# Avoid primitive types
 
 ---
 
@@ -322,6 +328,11 @@ public User withFirstName(FirstName firstName) {
 @[3]
 @[2,3-5]
 
+---?color=FF0000
+@title[Avoid primitive types]
+
+# Avoid primitive types
+
 ---
 
 @title[Scala]
@@ -428,6 +439,175 @@ val firstName = FirstName("John")
 
 ---
 
+@title[Excuses]
 
+# Excuses
 
 ---
+
+@title[Code is longer]
+
+# Excuse 1
+
+## More code
+
+---
+
+@title[Removes duplicates]
+
+## No defensive programming
+
+## Removed duplicate code
+
+## Validation in only one place = less errors
+
+---
+
+@title[No defensive programming]
+
+```java
+public void addToOrder(
+  long orderId, long itemId, long quantity
+) {
+if(quantity <= 0 || quantity > MAX_ORDER)
+        throw new IllegalArgumentException(“foo bar”);
+
+if(!orderService.orderExists(orderId))
+        throw new IllegalStateException(“foo bar”);
+
+if(!itemService.itemExists(itemId))
+        throw new IllegalStateException(“foo bar”);
+
+ //
+}
+```
+@[4-11](You can remove that code)
+
+---
+
+@title[Less tests]
+
+## Less tests
+
+## Invalid code does not even compile
+
+---
+@title[Memory allocation]
+
+# Excuse 2
+
+## Memory allocation = slower code
+
+---
+
+@title[Memory allocation - busted]
+
+# Less code = less db/rest calls
+
+```scala
+class FirstName(val value: String) extends AnyVal {}
+```
+
+### At runtime it is just a String*
+
+*most of the time
+
+---
+
+@title[Code duplicates]
+
+# Duplicated code
+
+### Domain model
+### DTO
+### ORM entities
+
+---
+
+@title[Code duplicates - busted]
+
+# Single Responsibility Principle
+
+---
+
+@title[Not the way we write code]
+
+# It is not the way we write code
+
+---
+
+@title[Not the way we write code - busted]
+
+*"The most dangerous phrase in the language is, "We've always done it this way."* - Grace Murray Hopper 
+
+---
+
+@title[It is hard]
+
+# Difficult
+
+---
+
+@title[It is hard - busted]
+
+### The difference between:
+### Software engineering + software crafstmanship
+#### vs.
+### Coding + using ugly hacks
+
+---?color=#FFF994
+
+@title[The one thing]
+
+## What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary?
+
+"The One Thing" - Gary Keller
+
+---?color=FF0000
+@title[Avoid primitive types]
+
+# Avoid primitive types
+
+---
+
+@title[Summary]
+
+# Easy in Scala, but you can do it in Java too
+
+---
+
+@title[Summary 2]
+
+# Doing DDD is not a binary choice
+
+---
+
+@title[Summary 3]
+
+# Value objects and entities = the easiest part of DDD
+
+---
+
+@title[Disclaimer]
+
+#### Sample size: 1
+
+#### Microservices?
+
+---?color=FF0000
+@title[Avoid primitive types]
+
+# Avoid primitive types
+
+---
+
+@title[Title]
+
+# Effortless domain-driven design
+
+## The real Power of Scala
+
+##### Bartosz Mikulski
+##### @mikulskibartosz
+
+
