@@ -572,19 +572,19 @@ class FirstName(val value: String) extends AnyVal {}
 
 @title[Summary]
 
-# Easy in Scala, but you can do it in Java too
+## Easy in Scala, but you can do it in Java too
 
 ---
 
 @title[Summary 2]
 
-# Doing DDD is not a binary choice
+## Doing DDD is not a binary choice
 
 ---
 
 @title[Summary 3]
 
-# Value objects and entities = the easiest part of DDD
+## Value objects and entities = the easiest part of DDD
 
 ---
 
