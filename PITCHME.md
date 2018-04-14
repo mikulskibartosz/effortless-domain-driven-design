@@ -112,7 +112,7 @@ class User {
 * mail
 * e_mail
 
----?color=FF0000
+---?color=#FF0000
 @title[Avoid primitive types]
 
 # Avoid primitive types
@@ -160,7 +160,7 @@ addToOrder(order, item, 1000000);
 
 @title[Stringly-typed: addToOrder implementation]
 
-# Defensive programming
+## Defensive programming
 
 ```java
 public void addToOrder(
@@ -328,7 +328,7 @@ public User withFirstName(FirstName firstName) {
 @[3]
 @[2,3-5]
 
----?color=FF0000
+---?color=#FF0000
 @title[Avoid primitive types]
 
 # Avoid primitive types
@@ -563,7 +563,7 @@ class FirstName(val value: String) extends AnyVal {}
 
 "The One Thing" - Gary Keller
 
----?color=FF0000
+---?color=#FF0000
 @title[Avoid primitive types]
 
 # Avoid primitive types
@@ -594,7 +594,7 @@ class FirstName(val value: String) extends AnyVal {}
 
 #### Microservices?
 
----?color=FF0000
+---?color=#FF0000
 @title[Avoid primitive types]
 
 # Avoid primitive types
