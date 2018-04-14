@@ -612,4 +612,29 @@ class FirstName(val value: String) extends AnyVal {}
 ##### Bartosz Mikulski
 ##### @mikulskibartosz
 
+---
 
+## Questions?
+
+---
+
+## 1. Are there any other excuses?
+
+---
+
+## 2. When is it a bad idea?
+
+---
+
+# Questions?
+
+---
+
+@title[Title]
+
+# Effortless domain-driven design
+
+## The real Power of Scala
+
+##### Bartosz Mikulski
+##### @mikulskibartosz
