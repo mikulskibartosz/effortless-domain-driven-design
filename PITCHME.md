@@ -550,10 +550,10 @@ class FirstName(val value: String) extends AnyVal {}
 
 @title[It is hard - busted]
 
-### The difference between:
-### Software engineering + software crafstmanship
-#### vs.
-### Coding + using ugly hacks
+#### The difference between:
+#### Software engineering + software craftsmanship
+##### vs.
+#### Coding + using ugly hacks
 
 ---?color=#FFF994
 
