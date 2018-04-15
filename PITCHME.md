@@ -4,6 +4,14 @@
 
 ---
 
+@title[Road to hell]
+
+### The road to hell is paved with JavaScript and primitive types.
+
+Note:
+The sad truth is the fact that the road to hell is paved with JavaScript and primitive types.
+---
+
 @title[Story - once upon a time]
 
 # Once upon a time...
@@ -14,23 +22,32 @@
 
 # Fearless team of developers
 
----
-
-@title[Story - team - picture]
-
 ![Team - https://unsplash.com/photos/2_3c4dIFYFU](images/developers.jpg)
 
+Note:
+There was a fearless team of developers who wrote code in an usual Scala way.
+It was also similar to an usual way of writing code in Java.
 ---
 
 @title[The usual way]
 
 # The usual way
 
+Note:
+The usual way means there were primitive types. Everywhere.
+If there is an email address of the user, you store it in a String type.
+
 ---
 
 @title[Primitive types]
 
 # Primitive types
+
+Note:
+What is wrong with primitive types?
+The type does not mean anything. You can store anything in such variable.
+The only thing stopping you from storing an email address in the first name field is common sense.
+We all know that there is nothing less common than common sense.
 
 ---
 
@@ -43,6 +60,12 @@ public void addToOrder(
 ```
 @[1]
 @[2]
+
+Note:
+Let's look at this add to order method.
+Imagine that the method adds the item identified by the given itemId to the order identified by the orderId. The method add the given number of items.
+
+What can go wrong when you write code in such way? We will talk about that later.
 
 ---
 
@@ -59,6 +82,9 @@ class User {
 @[1]
 @[2-5]
 
+Note:
+The same team of developers had to store some user data. They created a normally looking User class.
+
 ---
 
 @title[Everything was fine - usually]
@@ -67,11 +93,17 @@ class User {
 
 ### usually...
 
+Note:
+Everyone is familiar with such style of writing code. There is nothing unusual about that. You can add a new person to the team and they will fell good about that. They won't understand the logic and the data model, but that is exactly what the expect. So maybe there is nothing wrong about it?
+
 ---
 
 @title[Everything was fine - picture]
 
 ![Joy https://unsplash.com/photos/e3OUQGT9bWU](images/joy.jpg)
+
+Note:
+We did not care. You can write code using primitive types and deliver features fast. What can go wrong?
 
 ---
 
@@ -81,23 +113,28 @@ class User {
 
 ##### General Data Protection Regulation
 
+
+Note:
+One day we realized that we will need to find all the personal data and be prepared to remove them. All of them! 
 ---
 
 @title[GDPR - hell]
 
 # Hell
 
----
-
-@title[GDPR - hell - image]
-
 ![Hell https://unsplash.com/photos/VU03qDREAgU](images/fire.jpg)
+
+Note:
+Suddenly, life was hell. What was the biggest problem?
 
 ---
 
 @title[Road to hell]
 
 ### The road to hell is paved with JavaScript and primitive types.
+
+Note:
+JavaScript and primitive types. We could do anything about JavaScript, because it was already too late. What was wrong with the primitive types? 
 
 ---
 
@@ -112,6 +149,9 @@ class User {
 * mail
 * e_mail
 
+Note:
+Try looking for email addresses. Can you find it by the type? Not, because it is a String. You have to look for the name, but programmers are very creative. So, there are many names you have to look for. 
+
 ---?color=#FF0000
 @title[Avoid primitive types]
 
@@ -122,6 +162,9 @@ class User {
 @title[Stringly-typed]
 
 # Stringly-typed
+
+Note:
+When people write code in such way we say the code is Stringly-typed. From the perspective of the programmer there are no types at all.
 
 ---
 
@@ -155,6 +198,14 @@ addToOrder(order, item, 1000000);
 @[9]
 @[11]
 @[13]
+
+Note:
+We already know that method. What can go wrong?
+There are only numeric parameters. All of them have the same type.
+We don't really know what those parameters mean. 
+Sure, we can look at the names, but as Java developers we know that the parameter names are not a part of the method signature. 
+
+TODO finish
 
 ---
 
