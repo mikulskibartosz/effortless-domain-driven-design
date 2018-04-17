@@ -613,11 +613,11 @@ It is not cool.
 
 ---
 
-~functional~
-~monad~
-~monoid~
-~applicative~
-~traversable~
+~~functional~~
+~~monad~~
+~~monoid~~
+~~applicative~~
+~~traversable~~
 
 ---?color=#FFF994
 
