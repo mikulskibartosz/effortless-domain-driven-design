@@ -606,6 +606,19 @@ class FirstName(val value: String) extends AnyVal {}
 ##### vs.
 #### Coding + using ugly hacks
 
+---
+@title[It is not cool]
+
+It is not cool.
+
+---
+
+~functional~
+~monad~
+~monoid~
+~applicative~
+~traversable~
+
 ---?color=#FFF994
 
 @title[The one thing]
