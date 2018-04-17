@@ -707,6 +707,14 @@ It is not cool.
 
 #### Microservices?
 
+---
+
+@title[Road to hell]
+
+### The road to hell is paved with JavaScript and primitive types.
+
+---
+
 ---?color=#FF0000
 @title[Avoid primitive types]
 
