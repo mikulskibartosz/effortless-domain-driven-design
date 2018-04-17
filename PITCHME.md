@@ -205,8 +205,14 @@ There are only numeric parameters. All of them have the same type.
 We don't really know what those parameters mean. 
 Sure, we can look at the names, but as Java developers we know that the parameter names are not a part of the method signature. 
 
-TODO finish
+The first example is correct. It may not be obvious after such introduction ;)
+Has anyone notice that I swapped the parameters in the second one? The code still compiles. Most likely the tests still pass because a lazy developer probably used the same test values for both ;)
 
+In the third one we have an invalid value. Again, there is nothing stopping me from doing that.
+
+The next one has a ridiculusly huge value. Is it a correct quantity? Most likely it is not a normal situation.
+
+Actually, nothing stops me from adding both ids and multiplying the result by the quantity. 
 ---
 
 @title[Stringly-typed: addToOrder implementation]
@@ -234,6 +240,11 @@ if(!itemService.itemExists(itemId))
 @[10-11]
 @[5,8,11](throw new RuntimeException("validation error"))
 
+Note:
+But we have validation, don't we? At the beginning of the method we check the parameters.
+We check if the value is within the expected range. We use some external services to verify whether the values are correct. The first 6 lines of this method do not do anything related to adding an item to the order!
+
+
 ---
 
 @title[Stringly-typed: Text]
@@ -242,6 +253,8 @@ if(!itemService.itemExists(itemId))
 
 ## Text
 
+Note:
+You don't need numbers to create a mess. String is great too!
 
 ---
 
@@ -255,6 +268,10 @@ class User {
 }
 ```
 @[2-5]
+
+Note:
+A typical model class. We have some information about an user. Everything stored in a string.
+Once again I can swap parameters, I can put 1000 characters long string as a first name.
 
 ---
 
@@ -271,6 +288,12 @@ public void sendNotification(String email) {
 ```
 @[2,5]
 
+Note:
+Once again we have validation. This time we want to send a notification to the given email address. So we have to check whether the value is a correct email address.
+We cannot send it to some random email, so we must also check whether the email has been verified.
+ 
+Again 6 lines of code, not related to sending the email.
+And you have to do it in every method which uses the email address. Because if you forget in one place, we all know it will cause errors.
 ---
 
 @title[Constraints - 1]
@@ -278,11 +301,21 @@ public void sendNotification(String email) {
 ## Value = Type
 ## ???
 
+
+Note:
+What is a value?
+Is it only a type? 
+
 ---
 
 @title[Constraints - 2]
 
 ## Value = Type + Constraints
+
+Note:
+Do we have some expectations?
+Constraints perhaps?
+When I store email address as a String? Does it tell you anything? You don't know if I validated that value, you don't know if the length is limited. 
 
 ---
 
@@ -300,12 +333,26 @@ public void sendNotification(
 @[2]
 @[6]
 
+Note:
+What if I wrote the code in this way?
+Insted of longs I have separate types for every parameter.
+I cannot swap two parameters, now the code would not compile.
+I cannot use an invalid value, it would not be possible to create an instance of the class if I passed an incorrect value to its constructor (hopefully, if I wrote validation).
+
+Look at the second example. Now I can even enforce business rules. Send notification method needs a verified email. It is obvious. I do not need to check it inside of this method again. 
+
 ---?color=#FFF994
 
 @title[DDD]
 
 # The core of DDD
 ## Entities and value objects
+
+Note:
+There are two important parts of Domain Driven Design.
+Entities and value objects. Often overlooked. Too simple to write blog post about them. Not cool enough. 
+
+TODO 
 
 ---
 
