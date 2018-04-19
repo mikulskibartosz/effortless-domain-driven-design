@@ -351,8 +351,8 @@ Look at the second example. Now I can even enforce business rules. Send notifica
 Note:
 There are two important parts of Domain Driven Design.
 Entities and value objects. Often overlooked. Too simple to write blog post about them. Not cool enough. 
-
-TODO 
+They are importante because they are the building blocks. You cannot have aggregates, commands, factories, or even events, without value objects and entities.
+Unfortunately, oftentimes we ignore those simple parts. Let's look at the benefits of using them.
 
 ---
 
@@ -365,6 +365,11 @@ TODO
 - immutability
 
 @ulend
+
+Note:
+What are the requirements of DDD objects? We need specific types, something that describes the business domain. You cannot just pass around strings and numbers.
+
+The objects must be immutable. It is not a DDD requirement, but it makes you life so much easier.
 
 ---
 
@@ -385,6 +390,10 @@ public class FirstName {
 }
 ```
 
+Note:
+How would you do that in Java?
+That is one simple class of a value object. We have a first name and we can get the value or create a new instance. Note that you cannot modify the value. If you want to change it, you must create a new instance.
+
 ---
 
 @title[DDD - complex type]
@@ -401,6 +410,10 @@ public class User {
   (...)
 }
 ```
+
+Note:
+Those are the fields of a more complex class. Just fields. Looks easy.
+How would you modify the value?
 
 ---
 
@@ -426,10 +439,18 @@ public User withFirstName(FirstName firstName) {
 @[3]
 @[2,3-5]
 
+Note:
+You can create something like that. A withFirstName method which accepts a FirstName parameter and returns an new instance of the User class with modified first name, all other values stay the same.
+You have to write such method for every field. There is a lot of code. 
+
 ---?color=#FF0000
 @title[Avoid primitive types]
 
 # Avoid primitive types
+
+Note:
+All of that to avoid primitive types. Looks like a lot of work.
+I was supposed to talk about Scala, so how does it look in Scala?
 
 ---
 
@@ -444,6 +465,9 @@ public User withFirstName(FirstName firstName) {
 # SCALA
 
 ### Effortless
+
+Note:
+I promised that in Scala such things will be easy, effortless and extremly simple.
 
 ---
 
@@ -462,6 +486,11 @@ class FirstName(val value: String) extends AnyVal {}
 @[3]
 @[5]
 
+Note:
+- just a scala class with an immutable field
+- case classes
+- value classes
+
 ---
 
 @title[DDD - Scala - complex types]
@@ -477,6 +506,10 @@ case class User(
 ) 
 ```
 @[1]
+
+Note:
+Immutable fields of a complex type.
+
 
 ---
 
@@ -496,6 +529,11 @@ case class User(
 user.copy(firstName = FirstName("John"))
 ```
 
+Note:
+How to change a value of a field?
+Case classes have the copy function which returns a new instance with modified values.
+You can change more than one field at once.
+
 ---
 
 @title[Case classes]
@@ -514,6 +552,10 @@ object FirstName {
 }
 
 val firstName = FirstName("John")
+
+Note:
+When you use case classes you get an automatically generated companion object which defines the apply function.
+The apply function shortens the notation in Scala, you can just write the name of the type and it will call the apply function of this type.
 
 ```
 @[1]
@@ -539,7 +581,8 @@ val firstName = FirstName("John")
 
 @title[Excuses]
 
-# Excuses
+# Avoid primitive types
+## Excuses
 
 ---
 
@@ -548,6 +591,9 @@ val firstName = FirstName("John")
 # Excuse 1
 
 ## More code
+
+Note:
+You have to write more code. It was easy to just pass Strings everywhere. Now you have to create a new type, it is problematic, isn't it?
 
 ---
 
@@ -558,6 +604,11 @@ val firstName = FirstName("John")
 ## Removed duplicate code
 
 ## Validation in only one place = less errors
+
+Note:
+Let's think about the code you will remove.
+You no longer need defensive programming. There was a lot of code to check the parameters at the beginning of every method. Now you check the parameters only in the type constructor or its companion object. 
+So, you also don't have duplicate code. And you don't have code which was supposed to be duplicate, but someone forgot to update all places when the conditions are checked so some of them pass and some of the fail. We love such things, don't we? 
 
 ---
 
@@ -581,6 +632,9 @@ if(!itemService.itemExists(itemId))
 ```
 @[4-11](You can remove that code)
 
+Note:
+Now the ifs are in constructors. Most likely one if per constructor, so they are also easy to test.
+
 ---
 
 @title[Less tests]
@@ -589,12 +643,20 @@ if(!itemService.itemExists(itemId))
 
 ## Invalid code does not even compile
 
+Note:
+You don't need to check the behavior of addToOrder function when you pass -1 as the quantity. It will never happen. 
+You can't pass an itemId as the orderId. Such code will not even compile.
+
 ---
 @title[Memory allocation]
 
 # Excuse 2
 
 ## Memory allocation = slower code
+
+Note:
+You have to create a lot of small objects. They have headers, a lock, a reference to the value. You need to allocate more memory.
+You need more RAM and your code is slower.
 
 ---
 
@@ -610,6 +672,11 @@ class FirstName(val value: String) extends AnyVal {}
 
 *most of the time
 
+Note:
+I was using external services to validate values in the addToOrder method. This is not cheap code. You want to avoid doing such things more than you want to avoid creating new objects.
+
+Also value classes in Scala exist because of that. You need to verify the types only during compilation, at runtime it can be a String. 
+
 ---
 
 @title[Code duplicates]
@@ -620,17 +687,27 @@ class FirstName(val value: String) extends AnyVal {}
 ### DTO
 ### ORM entities
 
+Note:
+You cannot use you model classes in the REST API, writing mappers would be a nightmare. You need a separate DTO model and a little bit simpler mappers to map between domain and DTO.
+The same problem with ORM, you need another model. 
+
 ---
 
 @title[Code duplicates - busted]
 
 # Single Responsibility Principle
 
+Note:
+It is a good engineering practice to have all such models separated.
+
 ---
 
 @title[Not the way we write code]
 
 # It is not the way we write code
+
+Note:
+It is not the usual way of writing code. When people hear about that they may even agree, but that does not change their behavior because the code is not familiar. 
 
 ---
 
@@ -644,6 +721,9 @@ class FirstName(val value: String) extends AnyVal {}
 
 # Difficult
 
+Note:
+It is hard to write such code.
+
 ---
 
 @title[It is hard - busted]
@@ -653,10 +733,25 @@ class FirstName(val value: String) extends AnyVal {}
 ##### vs.
 #### Coding + using ugly hacks
 
+Note:
+software craftsmanship
+following good practices
+avoiding ugly hacks
+writing clean code
+writing self-documenting code
+code that is easy to understand for the next programmers
+code that makes it hard to make a mistake
+
 ---
 @title[It is not cool]
 
 It is not cool.
+
+Note:
+When people hear about Scala they think about functional programming.
+For many people functional programming means using all concepts useful in Haskell.
+In my opinion it usually does not make sense in Scala.
+You were supposed to solve the business problem.
 
 ---
 
@@ -665,6 +760,9 @@ It is not cool.
 ~~monoid~~
 ~~applicative~~
 ~~traversable~~
+
+Note:
+sure you can use monads, monoids, applicatives, etc. and feel superior to anyone who don't even know what those word mean. That is not software craftsmanship, you were supposed to write code that is easy to modify. 
 
 ---?color=#FFF994
 
@@ -691,6 +789,9 @@ It is not cool.
 
 ## Doing DDD is not a binary choice
 
+Note:
+You can choose some parts of DDD, in this example I talked about value objects and entities. If you incorporate that in you code, you will see a huge difference.
+
 ---
 
 @title[Summary 3]
@@ -706,6 +807,11 @@ It is not cool.
 #### Sample size: 1
 
 #### Microservices?
+
+Note:
+Based on my own experience.
+
+If you have a microservice which has 100 lines of code in total, don't bother. 
 
 ---
 
