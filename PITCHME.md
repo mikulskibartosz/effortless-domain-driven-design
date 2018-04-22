@@ -629,7 +629,7 @@ Like you should do in object oriented programming.
 - pattern matching
 - can have functions and fields (just like a class)
 - `copy` method (shallow copy)
-- case classes are compared by structure and not by reference (x1 == x2)
+- equals/hashCode
 
 @ulend
 
