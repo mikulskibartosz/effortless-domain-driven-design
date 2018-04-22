@@ -834,8 +834,36 @@ Note:
 * code that makes it hard to make a mistake
 
 ---
+@title[Good practices]
+
+# Software craftsmanship
+
+@ul[squares]
+
+* clean code
+* self-documenting code
+* code that is easy to understand for the next programmers
+* code that makes it hard to make a mistake
+
+
+@ulend
+
+---
+@title[Everyone can understand my code]
+
+# Excuse 6
+
+# Everyone can understand my code
+
+### What about job security?
+
+Note:
+In every company there is an employee who cannot be fired or who cannot quit, because he or she knows everything about the software.
+
+---
 @title[It is not cool]
 
+# Excuse 7
 # It is not cool
 
 Note:
