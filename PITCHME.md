@@ -454,7 +454,7 @@ public User withFirstName(FirstName firstName) {
 ```
 @[1]
 @[3]
-@[2,3-5]
+@[2,3-6]
 
 Note:
 You can create something like that. A withFirstName method which accepts a FirstName parameter and returns an new instance of the User class with modified first name, all other values stay the same.
@@ -528,7 +528,6 @@ case class User(
 Note:
 Immutable fields of a complex type.
 
-
 ---
 
 @title[DDD - Scala - immutability]
@@ -555,7 +554,19 @@ Case classes have the copy function which returns a new instance with modified v
 You can change more than one field at once.
 
 ---
+@title[Self documenting]
 
+```java
+public void addToOrder(long, long, long)
+```
+
+```scala
+def addToOrder(OrderId, ItemId, Quantity): Unit
+```
+
+"Two methods have the same signature if they have the same name and argument types." - The Java Language Specification
+
+---
 @title[Case classes]
 
 # Case classes
@@ -825,7 +836,7 @@ Note:
 ---
 @title[It is not cool]
 
-It is not cool.
+# It is not cool
 
 Note:
 When people hear about Scala they think about functional programming.
@@ -907,8 +918,6 @@ If you have a microservice which has 100 lines of code in total, don't bother.
 
 ### The road to hell is paved with JavaScript and primitive types.
 
----
-
 ---?color=#FFF994
 @title[Avoid primitive types]
 
@@ -932,10 +941,12 @@ If you have a microservice which has 100 lines of code in total, don't bother.
 ---
 
 ## 1. Are there any other excuses?
+#### What is stopping you from doing that?
 
 ---
 
 ## 2. When is it a bad idea?
+#### "Best practices" are not universal, in some situations they are harmful
 
 ---
 
