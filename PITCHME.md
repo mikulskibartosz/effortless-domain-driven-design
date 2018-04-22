@@ -556,6 +556,8 @@ You can change more than one field at once.
 ---
 @title[Self documenting]
 
+# Self documenting
+
 ```java
 public void addToOrder(long, long, long)
 ```
