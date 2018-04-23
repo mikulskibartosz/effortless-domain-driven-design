@@ -682,7 +682,7 @@ Like you should do in object oriented programming.
 ---
 @title[Mars Climate Orbiter]
 
-On September 23, 1999, communication with the spacecraft was lost as the spacecraft went into orbital insertion, **due to ground-based computer software which produced output in non-SI units of pound-force seconds (lbf·s) instead of the SI units of newton-seconds (N·s) specified in the contract between NASA and Lockheed**.
+On September 23, 1999, communication with the spacecraft was lost as the spacecraft went into orbital insertion, due to ground-based computer software which produced **output in non-SI units of pound-force seconds (lbf·s) instead of the SI units of newton-seconds (N·s)** specified in the contract between NASA and Lockheeda.
 
 The spacecraft encountered Mars on a trajectory that brought it too close to the planet, causing it to pass through the upper atmosphere and disintegrate.
 
