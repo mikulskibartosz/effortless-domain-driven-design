@@ -144,9 +144,37 @@ What was wrong with the primitive types?
 
 ---
 
+@title[GDPR - description]
+
+## General Data Protection Regulation
+
+@ul[squares]
+
+* The right of access
+* The right to data portability
+* The right to erasure
+* Deadline: 25 May 2018
+* Approved on: 14 April 2016
+
+@ulend
+
+---
+
+@title[GDPR - problems]
+
+## GDPR - our problems
+@ul[squares]
+* many services
+* manual work
+* no common domain/data model
+* primitive types (userId = String | Long | Int)
+@ulend
+
+---
+
 @title[Stringly-typed: Ctrl + F]
 
-# GDPR?
+# GDPR
 ## Ctrl + f
 
 * emailAddress
@@ -329,6 +357,12 @@ Do we have some expectations?
 Constraints perhaps?
 
 When I store email address as a String? Does it tell you anything? You don't know if I validated that value, you don't know if the length is limited. 
+
+---
+
+@title[Constraints - 3]
+
+## Value = Type + Constraints + Units
 
 ---
 
@@ -671,7 +705,7 @@ PGM-17 Thor (25 January 1957)
 
 @title[Code is longer]
 
-# Excuse 1
+#### Excuse 1
 
 ## More code
 
@@ -736,7 +770,7 @@ You can't pass an itemId as the orderId. Such code will not even compile.
 ---
 @title[Memory allocation]
 
-# Excuse 2
+#### Excuse 2
 
 ## Memory allocation = slower code
 
@@ -768,7 +802,7 @@ Also value classes in Scala exist because of that. You need to verify the types 
 
 @title[Code duplicates]
 
-# Excuse 3
+#### Excuse 3
 
 # Duplicated code
 
@@ -794,7 +828,7 @@ It is a good engineering practice to have all such models separated.
 
 @title[Not the way we write code]
 
-# Excuse 4
+#### Excuse 4
 
 # It is not the way we write code
 
@@ -811,7 +845,7 @@ It is not the usual way of writing code. When people hear about that they may ev
 
 @title[It is hard]
 
-# Excuse 5
+#### Excuse 5
 
 # Difficult
 
@@ -838,7 +872,7 @@ Note:
 ---
 @title[Good practices]
 
-# Software craftsmanship
+## Software craftsmanship
 
 @ul[squares]
 
@@ -853,8 +887,7 @@ Note:
 ---
 @title[Everyone can understand my code]
 
-# Excuse 6
-
+#### Excuse 6
 # Everyone can understand my code
 
 ### What about job security?
@@ -865,7 +898,7 @@ In every company there is an employee who cannot be fired or who cannot quit, be
 ---
 @title[It is not cool]
 
-# Excuse 7
+#### Excuse 7
 # It is not cool
 
 Note:
@@ -877,6 +910,8 @@ In my opinion it usually does not make sense in Scala.
 You were supposed to solve the business problem.
 
 ---
+
+#### Java -> Scala
 
 ~~functional~~
 
