@@ -557,7 +557,7 @@ case class User(
   phoneNumber: PhoneNumber
 ) 
 ```
-@[1]
+@[2-5]
 
 Note:
 Immutable fields of a complex type.
