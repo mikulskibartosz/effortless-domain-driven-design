@@ -60,9 +60,9 @@ We all know that there is nothing less common than common sense.
 @title[addToOrder method]
 
 ```scala
-def addToOrder: Unit(
+def addToOrder(
   orderId: Long, itemId: Long, quantity: Long
-);
+): Unit
 ```
 @[1]
 @[2]
@@ -198,9 +198,9 @@ From the perspective of the programmer there are no types at all.
 
 @title[Stringly-typed: addToOrder method]
 ```scala
-def addToOrder: Unit(
+def addToOrder(
   orderId: Long, itemId: Long, quantity: Long
-);
+): Unit
 
 addToOrder(order, item, quantity);
 
@@ -240,9 +240,9 @@ Actually, nothing stops me from adding both ids and multiplying the result by th
 ## Defensive programming
 
 ```scala
-def addToOrder: Unit(
+def addToOrder(
   orderId: Long, itemId: Long, quantity: Long
-) {
+): Unit {
 if(quantity <= 0 || quantity > MAX_ORDER)
 	throw new IllegalArgumentException(“foo bar”)
 
