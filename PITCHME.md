@@ -6,10 +6,12 @@
 
 @title[Road to hell]
 
-### The road to hell is paved with JavaScript and primitive types.
+### The road to hell is paved with primitive types.
+
+![Pavement - https://unsplash.com/photos/-ll5DKSQDkI](images/pavement.jpg)
 
 Note:
-The sad truth is the fact that the road to hell is paved with JavaScript and primitive types.
+The sad truth is the fact that the road to hell is paved with primitive types.
 ---
 
 @title[Story - once upon a time]
@@ -24,7 +26,6 @@ The sad truth is the fact that the road to hell is paved with JavaScript and pri
 
 Note:
 There was a fearless team of developers who wrote code in an usual Scala way.
-It was also similar to an usual way of writing code in Java.
 ---
 
 @title[Story - team]
@@ -38,7 +39,8 @@ It was also similar to an usual way of writing code in Java.
 
 Note:
 The usual way means there were primitive types. Everywhere.
-If there is an email address of the user, you store it in a String type.
+If there is an email address of the user, they store it in a String type.
+If there was an order id to be stored, they used an Int.
 
 ---
 
@@ -57,9 +59,9 @@ We all know that there is nothing less common than common sense.
 
 @title[addToOrder method]
 
-```java
-public void addToOrder(
-  long orderId, long itemId, long quantity
+```scala
+def addToOrder: Unit(
+  orderId: Long, itemId: Long, quantity: Long
 );
 ```
 @[1]
@@ -75,12 +77,12 @@ What can go wrong when you write code in such way? We will talk about that later
 
 @title[User class]
 
-```java
-class User {
-  private String firstName;
-  private String lastName;
-  private String emailAddress;
-  private String phoneNumber;
+```scala
+case class User {
+  firstName: String,
+  lastName: String,
+  emailAddress: String,
+  phoneNumber: String
 }
 ```
 @[1]
@@ -135,28 +137,10 @@ Suddenly, life was hell. What was the biggest problem?
 
 @title[Road to hell]
 
-### The road to hell is paved with JavaScript and primitive types.
+### The road to hell is paved with primitive types.
 
 Note:
-JavaScript and primitive types. We could not do anything about JavaScript, because it was already too late.
-
 What was wrong with the primitive types? 
-
----
-
-@title[GDPR - description]
-
-## General Data Protection Regulation
-
-@ul[squares]
-
-* The right of access
-* The right to data portability
-* The right to erasure
-* Deadline: 25 May 2018
-* Approved on: 14 April 2016
-
-@ulend
 
 ---
 
@@ -167,7 +151,7 @@ What was wrong with the primitive types?
 * many services
 * manual work
 * no common domain/data model
-* primitive types (userId = String | Long | Int)
+* primitive types (userId = String ? Long ? Int ?)
 @ulend
 
 ---
@@ -213,9 +197,9 @@ From the perspective of the programmer there are no types at all.
 ---
 
 @title[Stringly-typed: addToOrder method]
-```java
-public void addToOrder(
-  long orderId, long itemId, long quantity
+```scala
+def addToOrder: Unit(
+  orderId: Long, itemId: Long, quantity: Long
 );
 
 addToOrder(order, item, quantity);
@@ -255,18 +239,18 @@ Actually, nothing stops me from adding both ids and multiplying the result by th
 
 ## Defensive programming
 
-```java
-public void addToOrder(
-  long orderId, long itemId, long quantity
+```scala
+def addToOrder: Unit(
+  orderId: Long, itemId: Long, quantity: Long
 ) {
 if(quantity <= 0 || quantity > MAX_ORDER)
-	throw new IllegalArgumentException(“foo bar”);
+	throw new IllegalArgumentException(“foo bar”)
 
 if(!orderService.orderExists(orderId))
-	throw new IllegalStateException(“foo bar”);
+	throw new IllegalStateException(“foo bar”)
 
 if(!itemService.itemExists(itemId))
-	throw new IllegalStateException(“foo bar”);
+	throw new IllegalStateException(“foo bar”)
 
  //
 }
@@ -296,12 +280,12 @@ You don't need numbers to create a mess. String is great too!
 ---
 
 @title[Stringly-typed: User example]
-```java
-class User {
-  private String firstName;
-  private String lastName;
-  private String emailAddress;
-  private String phoneNumber;
+```scala
+case class User {
+  firstName: String,
+  lastName: String,
+  emailAddress: String,
+  phoneNumber: String
 }
 ```
 @[2-5]
@@ -314,8 +298,8 @@ Once again I can swap parameters, I can put 1000 characters long string as a fir
 ---
 
 @title[Stringly-typed: email validation]
-```java
-public void sendNotification(String email) {
+```scala
+def sendNotification(email: String) {
   if(!emailValidator.isValid(email)) {
     throw new RuntimeException("...")
   }
@@ -368,13 +352,13 @@ When I store email address as a String? Does it tell you anything? You don't kno
 
 @title[Constraints - code example]
 
-```java
-public void addToOrder(
-  OrderId orderId, ItemId itemId, Quantity quantity
+```scala
+def addToOrder(
+  orderId: OrderId, itemId: ItemId, quantity: Quantity
 )
 
-public void sendNotification(
-  VerifiedEmail email
+def sendNotification(
+  email: VerifiedEmail
 )
 ```
 @[2]
@@ -420,80 +404,6 @@ Note:
 What are the requirements of DDD objects? We need specific types, something that describes the business domain. You cannot just pass around strings and numbers.
 
 The objects must be immutable. It is not a DDD requirement, but it makes you life so much easier.
-
----
-
-@title[DDD - types]
-# Simple types
-
-```java
-public class FirstName {
-  private final String value;
-  
-  public FirstName(String value) {
-    this.value = value;
-  }
-  
-  public String getValue() {
-    return this.value;
-  }
-}
-```
-
-Note:
-How would you do that in Java?
-
-That is one simple class of a value object. We have a first name and we can get the value or create a new instance. Note that you cannot modify the value. If you want to change it, you must create a new instance.
-
----
-
-@title[DDD - complex type]
-
-# Complex types
-
-```java
-public class User {
-  private final FirstName firstName;
-  private final LastName lastName;
-  private final EmailAddress emailAddress;
-  private final TelephoneNumber telephoneNumber;
-  
-  (...)
-}
-```
-
-Note:
-Those are the fields of a more complex class. Just fields. Looks easy.
-How would you modify the value?
-
----
-
-@title[DDD - complex part - the easy part]
-
-# That was the easy part...
-
----
-
-@title[DDD - complex part - change value]
-
-```java
-public User withFirstName(FirstName firstName) {
-  return new User(
-    firstName,
-    this.lastName,
-    this.emailAddress,
-    this.phoneNumber
-  );
-}
-```
-@[1]
-@[3]
-@[2,3-6]
-
-Note:
-You can create something like that. A withFirstName method which accepts a FirstName parameter and returns an new instance of the User class with modified first name, all other values stay the same.
-
-You have to write such method for every field. There is a lot of code. 
 
 ---?color=#FFF994
 @title[Avoid primitive types]
@@ -545,6 +455,10 @@ Note:
 
 ---
 
+TODO Libs
+
+---
+
 @title[DDD - Scala - complex types]
 
 # Complex types
@@ -592,12 +506,12 @@ You can change more than one field at once.
 
 # Self documenting
 
-```java
-public void addToOrder(long, long, long)
+```scala
+def addToOrder(long, long, long)
 ```
 
 ```scala
-def addToOrder(OrderId, ItemId, Quantity): Unit
+def addToOrder(OrderId, ItemId, Quantity)
 ```
 
 "Two methods have the same signature if they have the same name and argument types." - The Java Language Specification
@@ -668,34 +582,6 @@ Like you should do in object oriented programming.
 @ulend
 
 ---
-@title[More hype]
-
-# More hype
-### Why should I care?
-
----
-@title[Mars_Climate_Orbiter]
-
-## Mars Climate Orbiter
-![https://en.wikipedia.org/wiki/Mars_Climate_Orbiter](images/Mars_Climate_Orbiter_2.jpg)
-
----
-@title[Mars Climate Orbiter]
-
-On September 23, 1999, communication with the spacecraft was lost as the spacecraft went into orbital insertion, due to ground-based computer software which produced **output in non-SI units of pound-force seconds (lbf·s) instead of the SI units of newton-seconds (N·s)** specified in the contract between NASA and Lockheeda.
-
-The spacecraft encountered Mars on a trajectory that brought it too close to the planet, causing it to pass through the upper atmosphere and disintegrate.
-
----
-
-@title[Rockets]
-
-## Undefined in not an engine
-![](images/rocket_failure.gif)
-
-PGM-17 Thor (25 January 1957)
-
----
 @title[Excuses]
 
 # Avoid primitive types
@@ -733,9 +619,9 @@ So, you also don't have duplicate code. And you don't have code which was suppos
 
 @title[No defensive programming]
 
-```java
-public void addToOrder(
-  long orderId, long itemId, long quantity
+```scala
+def addToOrder(
+  orderId: Long, itemId: Long, quantity: Long
 ) {
 if(quantity <= 0 || quantity > MAX_ORDER)
         throw new IllegalArgumentException(“foo bar”);
@@ -856,7 +742,7 @@ It is hard to write such code.
 
 @title[It is hard - busted]
 
-#### Software engineering + software craftsmanship
+#### Software engineering + software craft
 ##### vs.
 #### Coding + using ugly hacks
 
@@ -872,7 +758,7 @@ Note:
 ---
 @title[Good practices]
 
-## Software craftsmanship
+## Software craft
 
 @ul[squares]
 
@@ -911,7 +797,7 @@ You were supposed to solve the business problem.
 
 ---
 
-#### Java -> Scala
+#### FP
 
 ~~functional~~
 
@@ -943,12 +829,6 @@ That is not software craftsmanship, you were supposed to write code that is easy
 
 ---
 
-@title[Summary]
-
-## Easy in Scala, but you can do it in Java too
-
----
-
 @title[Summary 2]
 
 ## Doing DDD is not a binary choice
@@ -968,7 +848,7 @@ You can choose some parts of DDD, in this example I talked about value objects a
 
 ## Disclaimer
 
-#### Sample size: 1
+#### Sample size: 1-2
 
 #### Microservices?
 
@@ -981,7 +861,7 @@ If you have a microservice which has 100 lines of code in total, don't bother.
 
 @title[Road to hell]
 
-### The road to hell is paved with JavaScript and primitive types.
+### The road to hell is paved with primitive types.
 
 ---?color=#FFF994
 @title[Avoid primitive types]
