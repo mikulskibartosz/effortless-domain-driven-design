@@ -251,8 +251,6 @@ if(!orderService.orderExists(orderId))
 
 if(!itemService.itemExists(itemId))
 	throw new IllegalStateException(“foo bar”)
-
- //
 }
 ```
 @[4-5]
@@ -455,10 +453,6 @@ Note:
 
 ---
 
-TODO Libs
-
----
-
 @title[DDD - Scala - complex types]
 
 # Complex types
@@ -609,7 +603,11 @@ type EmailAddress = String @@ EmailAddressTag
 @title[Shapeless - usage]
 
 ```scala
-case class User(firstName: FirstName, lastName: LastName, emailAddress: EmailAddress)
+case class User(
+  firstName: FirstName,
+  lastName: LastName,
+  emailAddress: EmailAddress
+)
 
 val user = User(
   firstName = tag[FirstNameTag][String]("first name"),
@@ -668,8 +666,6 @@ if(!orderService.orderExists(orderId))
 
 if(!itemService.itemExists(itemId))
         throw new IllegalStateException(“foo bar”);
-
- //
 }
 ```
 @[4-11](You can remove that code)
