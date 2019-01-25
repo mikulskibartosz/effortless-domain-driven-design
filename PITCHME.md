@@ -582,6 +582,43 @@ Like you should do in object oriented programming.
 @ulend
 
 ---
+
+@title[Shapeless - tagged types]
+
+```scala
+import shapeless.tag
+import shapeless.tag.@@
+```
+
+---
+
+@title[Shapeless - define tags and types]
+
+```scala
+trait FirstNameTag
+trait LastNameTag
+trait EmailAddressTag
+
+type FirstName = String @@ FirstNameTag
+type LastName = String @@ LastNameTag
+type EmailAddress = String @@ EmailAddressTag
+```
+
+---
+
+@title[Shapeless - usage]
+
+```scala
+case class User(firstName: FirstName, lastName: LastName, emailAddress: EmailAddress)
+
+val user = User(
+  firstName = tag[FirstNameTag][String]("first name"),
+  lastName = tag[LastNameTag][String]("last name"),
+  emailAddress = tag[EmailAddressTag][String]("mail@example.com")
+)
+```
+
+---
 @title[Excuses]
 
 # Avoid primitive types
@@ -813,6 +850,26 @@ Note:
 sure you can use monads, monoids, applicatives, etc. and feel superior to anyone who don't even know what those words mean.
 
 That is not software craftsmanship, you were supposed to write code that is easy to modify. 
+
+---
+
+#### FP 
+
+```scala
+Option[A]
+
+Either[A, B]
+
+Future[C]
+
+IO[C]
+
+...
+```
+
+Note:
+We pay a lot of attention to those technical types. The problem is that the important part is hidden inside.
+We neglect the domain, even though it is the part that makes money for the business. The technical part only costs us money.
 
 ---
 
