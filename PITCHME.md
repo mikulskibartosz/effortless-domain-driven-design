@@ -577,6 +577,8 @@ Like you should do in object oriented programming.
 
 @title[Shapeless - tagged types]
 
+# Shapeless - tagged types
+
 ```scala
 import shapeless.tag
 import shapeless.tag.@@
@@ -585,6 +587,8 @@ import shapeless.tag.@@
 ---
 
 @title[Shapeless - define tags and types]
+
+# Shapeless - define tags and types
 
 ```scala
 trait FirstNameTag
@@ -599,6 +603,8 @@ type EmailAddress = String @@ EmailAddressTag
 ---
 
 @title[Shapeless - usage]
+
+# Shapeless - usage
 
 ```scala
 case class User(
