@@ -8,8 +8,6 @@
 
 ### The road to hell is paved with primitive types.
 
-![Pavement - https://unsplash.com/photos/-ll5DKSQDkI](images/pavement.jpg)
-
 Note:
 The sad truth is the fact that the road to hell is paved with primitive types.
 ---
