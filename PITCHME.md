@@ -674,7 +674,9 @@ package object opaquetypes {
 package object opaquetypes {
   object Logarithm {
     // Extension methods define opaque types' public APIs
-    implicit class LogarithmOps(val `this`: Logarithm) extends AnyVal {
+    implicit class LogarithmOps(
+      val `this`: Logarithm
+    ) extends AnyVal {
       // This is the second way to unlift the logarithm type
       def toDouble: Double = math.exp(`this`)
       def +(that: Logarithm): Logarithm =
