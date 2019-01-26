@@ -627,8 +627,8 @@ val user = User(
 # Scala 3 - opaque types (SIP-35)
 
 ```scala
-# All examples copied from SIP-35
-# (https://docs.scala-lang.org/sips/opaque-types.html):
+// All examples copied from SIP-35
+// (https://docs.scala-lang.org/sips/opaque-types.html):
 
 package object opaquetypes {
   opaque type Logarithm = Double
@@ -640,6 +640,10 @@ package object opaquetypes {
 @title[Scala 3 - opaque types - companion object]
 
 # Scala 3 - opaque type - companion object
+
+---
+
+@title[Scala 3 - opaque types - companion object - example]
 
 ```scala
 package object opaquetypes {
@@ -662,6 +666,10 @@ package object opaquetypes {
 
 # Scala 3 - opaque type - public API
 
+---
+
+@title[Scala 3 - opaque types - public API - example]
+
 ```scala
 package object opaquetypes {
   object Logarithm {
@@ -669,8 +677,10 @@ package object opaquetypes {
     implicit class LogarithmOps(val `this`: Logarithm) extends AnyVal {
       // This is the second way to unlift the logarithm type
       def toDouble: Double = math.exp(`this`)
-      def +(that: Logarithm): Logarithm = Logarithm(math.exp(`this`) + math.exp(that))
-      def *(that: Logarithm): Logarithm = Logarithm(`this` + that)
+      def +(that: Logarithm): Logarithm =
+        Logarithm(math.exp(`this`) + math.exp(that))
+      def *(that: Logarithm): Logarithm =
+        Logarithm(`this` + that)
     }
   }
 }
