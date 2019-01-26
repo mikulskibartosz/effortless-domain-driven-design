@@ -621,6 +621,62 @@ val user = User(
 ```
 
 ---
+
+@title[Scala 3 - opaque types]
+
+# Scala 3 - opaque types (SIP-35)
+
+```scala
+# All examples copied from SIP-35
+# (https://docs.scala-lang.org/sips/opaque-types.html):
+
+package object opaquetypes {
+  opaque type Logarithm = Double
+}
+```
+
+---
+
+@title[Scala 3 - opaque types - companion object]
+
+# Scala 3 - opaque type - companion object
+
+```scala
+package object opaquetypes {
+  object Logarithm {
+    // These are the ways to lift to the logarithm type
+    def apply(d: Double): Logarithm = math.log(d)
+
+    def safe(d: Double): Option[Logarithm] =
+      if (d > 0.0) Some(math.log(d)) else None
+
+    // This is the first way to unlift the logarithm type
+    def exponent(l: Logarithm): Double = l
+  }
+}
+```
+
+---
+
+@title[Scala 3 - opaque types - public API]
+
+# Scala 3 - opaque type - public API
+
+```scala
+package object opaquetypes {
+  object Logarithm {
+    // Extension methods define opaque types' public APIs
+    implicit class LogarithmOps(val `this`: Logarithm) extends AnyVal {
+      // This is the second way to unlift the logarithm type
+      def toDouble: Double = math.exp(`this`)
+      def +(that: Logarithm): Logarithm = Logarithm(math.exp(`this`) + math.exp(that))
+      def *(that: Logarithm): Logarithm = Logarithm(`this` + that)
+    }
+  }
+}
+```
+
+---
 @title[Excuses]
 
 # Avoid primitive types
