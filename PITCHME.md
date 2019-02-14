@@ -200,13 +200,13 @@ def addToOrder(
   orderId: Long, itemId: Long, quantity: Long
 ): Unit
 
-addToOrder(order, item, quantity);
+addToOrder(order, item, quantity)
 
-addToOrder(item, order, quantity);
+addToOrder(item, order, quantity)
 
-addToOrder(order, item, -1);
+addToOrder(order, item, -1)
 
-addToOrder(order, item, 1000000);
+addToOrder(order, item, 1000000)
 
 (orderId + itemId) * quantity
 ```
@@ -494,21 +494,6 @@ Case classes have the copy function which returns a new instance with modified v
 You can change more than one field at once.
 
 ---
-@title[Self documenting]
-
-# Self documenting
-
-```scala
-def addToOrder(long, long, long)
-```
-
-```scala
-def addToOrder(OrderId, ItemId, Quantity)
-```
-
-"Two methods have the same signature if they have the same name and argument types." - The Java Language Specification
-
----
 @title[Case classes]
 
 # Case classes
@@ -689,6 +674,22 @@ package object opaquetypes {
 ```
 
 ---
+@title[Self documenting]
+
+# Self documenting
+
+```scala
+def addToOrder(long, long, long)
+```
+
+```scala
+def addToOrder(OrderId, ItemId, Quantity)
+```
+
+"Two methods have the same signature if they have the same name and argument types." - The Java Language Specification
+
+
+---
 @title[Excuses]
 
 # Avoid primitive types
@@ -731,13 +732,13 @@ def addToOrder(
   orderId: Long, itemId: Long, quantity: Long
 ) {
 if(quantity <= 0 || quantity > MAX_ORDER)
-        throw new IllegalArgumentException(“foo bar”);
+        throw new IllegalArgumentException(“foo bar”)
 
 if(!orderService.orderExists(orderId))
-        throw new IllegalStateException(“foo bar”);
+        throw new IllegalStateException(“foo bar”)
 
 if(!itemService.itemExists(itemId))
-        throw new IllegalStateException(“foo bar”);
+        throw new IllegalStateException(“foo bar”)
 }
 ```
 @[4-11](You can remove that code)
@@ -941,19 +942,6 @@ We neglect the domain, even though it is the part that makes money for the busin
 
 ---
 
-@title[The one thing]
-
-#### What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary?
-
-"The One Thing" - Gary Keller
-
----?color=#FFF994
-@title[Avoid primitive types]
-
-# Avoid primitive types
-
----
-
 @title[Summary 2]
 
 ## Doing DDD is not a binary choice
@@ -969,24 +957,11 @@ You can choose some parts of DDD, in this example I talked about value objects a
 
 ---
 
-@title[Disclaimer]
+@title[The one thing]
 
-## Disclaimer
+#### What’s the one thing you can do, such that by doing it, everything else will be easier or unnecessary?
 
-#### Sample size: 1-2
-
-#### Microservices?
-
-Note:
-Based on my own experience.
-
-If you have a microservice which has 100 lines of code in total, don't bother. 
-
----
-
-@title[Road to hell]
-
-### The road to hell is paved with primitive types.
+"The One Thing" - Gary Keller
 
 ---?color=#FFF994
 @title[Avoid primitive types]
@@ -995,32 +970,9 @@ If you have a microservice which has 100 lines of code in total, don't bother.
 
 ---
 
-@title[Title]
+@title[Road to hell]
 
-# Effortless domain-driven design
-
-## The real Power of Scala
-
-##### Bartosz Mikulski
-##### @mikulskibartosz
-
----
-
-## Questions?
-
----
-
-## 1. Are there any other excuses?
-#### What is stopping you from doing that?
-
----
-
-## 2. When is it a bad idea?
-#### "Best practices" are not universal, in some situations they are harmful
-
----
-
-# Questions?
+### The road to hell is paved with primitive types.
 
 ---
 
