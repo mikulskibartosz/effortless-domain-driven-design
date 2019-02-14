@@ -888,9 +888,18 @@ Note:
 In every company there is an employee who cannot be fired or who cannot quit, because he or she knows everything about the software.
 
 ---
-@title[It is not cool]
+@title[Apache Spark]
 
 #### Excuse 7
+# Apache Spark
+
+Note:
+Ok, fine. That excuse is a valid one. In this case you want your code to be as machine-friendly as possible.
+
+---
+@title[It is not cool]
+
+#### Excuse 8
 # It is not cool
 
 Note:
