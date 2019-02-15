@@ -24,11 +24,6 @@ The sad truth is the fact that the road to hell is paved with primitive types.
 
 Note:
 There was a fearless team of developers who wrote code in an usual Scala way.
----
-
-@title[Story - team]
-
-![Team - https://unsplash.com/photos/2_3c4dIFYFU](images/developers.jpg)
 
 ---
 @title[The usual way]
@@ -101,15 +96,6 @@ Note:
 Everyone is familiar with such style of writing code. There is nothing unusual about that.
 
 You can add a new person to the team and they will fell good about that. They won't understand the logic and the data model, but that is exactly what the expect.
-
----
-
-@title[Everything was fine - picture]
-
-![Joy https://unsplash.com/photos/e3OUQGT9bWU](images/joy.jpg)
-
-Note:
-We did not care. You can write code using primitive types and deliver features fast. What can go wrong?
 
 ---
 
