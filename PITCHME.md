@@ -463,23 +463,6 @@ Immutable fields of a complex type.
 #### Out of the box
 
 ---
-
-@title[DDD - Scala - copy]
-
-# Immutability.
-
-```scala
-user.copy(firstName = FirstName("John"))
-```
-
-Note:
-How to change a value of a field?
-
-Case classes have the copy function which returns a new instance with modified values.
-
-You can change more than one field at once.
-
----
 @title[Case classes]
 
 # Case classes
@@ -761,7 +744,7 @@ You need more RAM and your code is slower.
 
 @title[Memory allocation - busted]
 
-# Less code = less db/rest calls
+## less code = less db/rest calls = faster code
 
 ```scala
 class FirstName(val value: String) extends AnyVal {}
