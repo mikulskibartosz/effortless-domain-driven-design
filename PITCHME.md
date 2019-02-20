@@ -499,13 +499,16 @@ The apply function shortens the notation in Scala, you can just write the name o
 case class VerifiedEmail(email: String)
 
 object VerifiedEmail{
-  def apply(checkIfVerified: (String) => Future[Boolean])(email: String): Future[VerifiedEmail] = 
+  def apply(
+    checkIfVerified: (String) => Future[Boolean]
+    )(email: String): Future[VerifiedEmail] = 
     checkIfVerified(email).map {
       case true => VerifiedEmail(email)
       case false => throw new IllegalArgumentException(...)
   }
 }
 ```
+@[5-6]
 
 ---
 
@@ -517,7 +520,9 @@ sealed trait VerifiedEmail {
 }
 
 object VerifiedEmail {
-  def apply(checkIfVerified: (String) => Future[Boolean])(email: String): Future[VerifiedEmail] = 
+  def apply(
+    checkIfVerified: (String) => Future[Boolean]
+    )(email: String): Future[VerifiedEmail] = 
     checkIfVerified(email).map {
       case true => new VerifiedEmail {
         def email: String = email
@@ -526,6 +531,7 @@ object VerifiedEmail {
   }
 }
 ```
+@[1,10-12]
 
 ---
 @title[Case classes - function]
