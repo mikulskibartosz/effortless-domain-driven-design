@@ -492,6 +492,42 @@ When you use case classes you get an automatically generated companion object wh
 The apply function shortens the notation in Scala, you can just write the name of the type and it will call the apply function of this type.
 
 ---
+
+@title[Companion object as factory]
+
+```scala
+case class VerifiedEmail(email: String)
+
+object VerifiedEmail{
+  def apply(checkIfVerified: (String) => Future[Boolean])(email: String): Future[VerifiedEmail] = 
+    checkIfVerified(email).map {
+      case true => VerifiedEmail(email)
+      case false => throw new IllegalArgumentException(...)
+  }
+}
+```
+
+---
+
+@title[Companion object as factory - with trait]
+
+```scala
+sealed trait VerifiedEmail {
+  def email: String
+}
+
+object VerifiedEmail {
+  def apply(checkIfVerified: (String) => Future[Boolean])(email: String): Future[VerifiedEmail] = 
+    checkIfVerified(email).map {
+      case true => new VerifiedEmail {
+        def email: String = email
+      }
+      case false => throw new IllegalArgumentException(...)
+  }
+}
+```
+
+---
 @title[Case classes - function]
 ## Case class - functions
 
@@ -510,22 +546,6 @@ Note:
 Case classes can have functions, so you can keep the data and the behavior in one place.
 
 Like you should do in object oriented programming.
-
----
-
-@title[Case classes - features]
-
-# Case classes
-
-@ul[squares]
-
-- companion object
-- pattern matching
-- can have functions and fields (just like a class)
-- `copy` method (shallow copy)
-- equals/hashCode
-
-@ulend
 
 ---
 
@@ -641,22 +661,6 @@ package object opaquetypes {
   }
 }
 ```
-
----
-@title[Self documenting]
-
-# Self documenting
-
-```scala
-def addToOrder(long, long, long)
-```
-
-```scala
-def addToOrder(OrderId, ItemId, Quantity)
-```
-
-"Two methods have the same signature if they have the same name and argument types." - The Java Language Specification
-
 
 ---
 @title[Excuses]
@@ -846,9 +850,21 @@ Note:
 @ulend
 
 ---
-@title[Everyone can understand my code]
+
+@title[It is easy]
 
 #### Excuse 6
+
+# Easy
+
+Note:
+So easy that we don't talk about it, but also don't do it correctly because of that.
+
+
+---
+@title[Everyone can understand my code]
+
+#### Excuse 7
 # Everyone can understand my code
 
 ### What about job security?
@@ -859,7 +875,7 @@ In every company there is an employee who cannot be fired or who cannot quit, be
 ---
 @title[Apache Spark]
 
-#### Excuse 7
+#### Excuse 8
 # Apache Spark
 
 Note:
@@ -868,7 +884,7 @@ Ok, fine. That excuse is a valid one. In this case you want your code to be as m
 ---
 @title[It is not cool]
 
-#### Excuse 8
+#### Excuse 9
 # It is not cool
 
 Note:
